@@ -17,6 +17,6 @@
     "purescript-aff": "~0.13.0",
     "purescript-aff-coroutines": "~0.4.0",
     "purescript-console": "~0.1.1",
-    "purescript-thermite": "~0.11.0"
+    "purescript-thermite": "^0.12.0"
   }
 }
