@@ -7,6 +7,7 @@ import Prelude
 
 import Data.Maybe
 
+import Control.Apply ((*>))
 import Control.Monad.Eff
 import Control.Monad.Eff.Class (liftEff)
 import Control.Monad.Eff.Unsafe (unsafeInterleaveEff)
@@ -53,4 +54,4 @@ asyncMany f action props state k = unsafeInterleaveEff $ launchAff $ C.runProces
   process = f action props state $$ hoistFreeT liftEff consumer
 
   consumer :: C.Consumer (state -> state) (Eff eff) Unit
-  consumer = C.consumer \state -> map Just (k state)
+  consumer = C.consumer \state -> k state *> pure Nothing
